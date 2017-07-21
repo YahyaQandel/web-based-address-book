@@ -41,10 +41,22 @@
         </center>
         <div id="templatemo_content_right">
         <?php 
-        while($book = $books_array->fetch_assoc()) { ?>
+        while($book = $books_array->fetch_assoc()) {
+            $book_id = $book['id'];
+            $book_cover = $book['book_cover'];
+            if(!$book_cover){$book_cover = 'images/defbookcover.jpg';}
+            ?>
         	<div  class="templatemo_product_box">
-            	<h1><?php echo $book['book_name'] ?> <span>(by <?php echo $book['book_author_name']; ?>)</span></h1>
-   	            <img src="<?php echo $book['book_cover'];?>" alt="image" />
+            	<h1><?php echo $book['book_name'] ?> 
+                    <span>(by <?php echo $book['book_author_name']; ?>)</span> 
+                        <a href="#" onclick="delete_book('<?php echo $book_id;?>');">
+                            <div class="tooltip" style="float :right;cursor: pointer;">
+                                ×
+                                 <span class="tooltiptext">delete book</span>
+                            </div>
+                        </a>
+                </h1>
+   	            <img width="100" height="150" src="<?php echo $book_cover;?>" alt="image" />
                 <div class="product_info">
                 	<p><?php echo substr($book['book_desc'], 0, 100);?></p>
                   <h3>$<?php echo $book['book_price'];?></h3>
@@ -69,3 +81,4 @@
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/instant_search.js"></script>
+<script src="js/ajax_actions.js"></script>
