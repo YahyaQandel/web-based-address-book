@@ -5,7 +5,10 @@
 <title>Book Store Template, Free CSS Template, CSS Website Layout</title>
 <meta name="keywords" content="Book Store Template, Free CSS Template, CSS Website Layout, CSS, HTML" />
 <meta name="description" content="Book Store Template, Free CSS Template, Download CSS Website" />
-<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+<!-- <link href="style/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+<link href="style/templatemo_style.css" rel="stylesheet" type="text/css" />
+<link href="style/mystyle.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 <?php include "includes.php"; ?>
@@ -30,11 +33,16 @@
         <div id="templatemo_content_left">
 
         </div> <!-- end of content left -->
-        
+        <center>
+        <div class="form-group row">
+                      <label for="example-text-input" class="col-2 col-form-label">Search</label>
+                        <input id="search-criteria" type="text" onkeyup="search_fn();" name="keyword">
+        </div>
+        </center>
         <div id="templatemo_content_right">
         <?php 
         while($book = $books_array->fetch_assoc()) { ?>
-        	<div class="templatemo_product_box">
+        	<div  class="templatemo_product_box">
             	<h1><?php echo $book['book_name'] ?> <span>(by <?php echo $book['book_author_name']; ?>)</span></h1>
    	            <img src="<?php echo $book['book_cover'];?>" alt="image" />
                 <div class="product_info">
@@ -46,7 +54,6 @@
                 <div class="cleaner">&nbsp;</div>
             </div>
             <?php } ?>
-
         </div> <!-- end of content right -->
     
     	<div class="cleaner_with_height">&nbsp;</div>
@@ -60,3 +67,5 @@
 </div> <!-- end of container -->
 <div align=center>This template  downloaded form <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div></body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/instant_search.js"></script>
